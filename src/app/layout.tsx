@@ -1,9 +1,6 @@
 import Navbar from '@/components/Navbar';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import './globals.css';
-
-const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -17,13 +14,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className="px-1 lg:px-5">
         <header>
           <nav>
             <Navbar />
           </nav>
         </header>
-        <main>{children}</main>
+        <main className="page-bg h-screen py-2">{children}</main>
       </body>
     </html>
   );
