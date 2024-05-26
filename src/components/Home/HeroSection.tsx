@@ -23,8 +23,3 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
-
-/**
- * !Catchy Headline
- * ! Button
- */

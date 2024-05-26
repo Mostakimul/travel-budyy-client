@@ -17,3 +17,12 @@
 .hero-bg {
   background-image: url('/assets/banner2.jpg');
 }
+
+.glass-bg {
+  /* From https://css.glass */
+  background: rgba(15, 15, 15, 0.16);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(3.4px);
+  -webkit-backdrop-filter: blur(3.4px);
+}
