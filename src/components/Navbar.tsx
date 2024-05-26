@@ -33,6 +33,9 @@ const Navbar = () => {
             <li className="font-semibold text-lg">
               <Link href="/about-us">About Us</Link>
             </li>
+            <li className="font-semibold text-lg">
+              <Link href="/travels">Travels</Link>
+            </li>
           </ul>
         </div>
         <Link href="/">
@@ -47,6 +50,9 @@ const Navbar = () => {
 
           <li className="font-semibold text-lg">
             <Link href="/about-us">About Us</Link>
+          </li>
+          <li className="font-semibold text-lg">
+            <Link href="/travels">Travels</Link>
           </li>
         </ul>
       </div>
