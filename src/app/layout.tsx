@@ -16,13 +16,13 @@ export default function RootLayout({
   return (
     <Providers>
       <html lang="en">
-        <body className="px-1 lg:px-5">
+        <body className="page-bg">
           <header>
             <nav>
               <Navbar />
             </nav>
           </header>
-          <main className="page-bg h-screen py-2">{children}</main>
+          <main className="px-1 lg:px-5 h-screen">{children}</main>
         </body>
       </html>
     </Providers>
