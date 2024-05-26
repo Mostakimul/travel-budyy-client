@@ -1,4 +1,5 @@
 import Navbar from '@/components/Navbar';
+import Providers from '@/lib/providers/Providers';
 import type { Metadata } from 'next';
 import './globals.css';
 
@@ -13,15 +14,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="px-1 lg:px-5">
-        <header>
-          <nav>
-            <Navbar />
-          </nav>
-        </header>
-        <main className="page-bg h-screen py-2">{children}</main>
-      </body>
-    </html>
+    <Providers>
+      <html lang="en">
+        <body className="px-1 lg:px-5">
+          <header>
+            <nav>
+              <Navbar />
+            </nav>
+          </header>
+          <main className="page-bg h-screen py-2">{children}</main>
+        </body>
+      </html>
+    </Providers>
   );
 }
