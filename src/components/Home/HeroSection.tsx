@@ -2,8 +2,8 @@ import Link from 'next/link';
 
 const HeroSection = () => {
   return (
-    <section className="relative bg-cover bg-center h-screen w-full flex items-center justify-center rounded-md hero-bg">
-      <div className="absolute inset-0 bg-black opacity-70 rounded-md"></div>
+    <section className="relative bg-cover bg-center h-screen w-full flex items-center justify-center hero-bg">
+      <div className="absolute inset-0 bg-black opacity-70"></div>
       <div className="relative z-10 text-center text-white p-4">
         <h1 className="text-4xl md:text-6xl font-bold mb-4">
           Welcome to Travel Buddy

@@ -22,7 +22,7 @@ export default function RootLayout({
               <Navbar />
             </nav>
           </header>
-          <main className="px-1 lg:px-5 h-screen">{children}</main>
+          <main className="h-screen">{children}</main>
         </body>
       </html>
     </Providers>
