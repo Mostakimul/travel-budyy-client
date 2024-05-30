@@ -2,7 +2,7 @@ import { TTrip } from '@/types';
 import Card from '../Card';
 
 const TravelPosts = async () => {
-  const result = await fetch(`${process.env.APP_API_URL}/trip`, {
+  const result = await fetch(`${process.env.NEXT_PUBLIC_APP_API_URL}/trip`, {
     cache: 'no-cache',
   });
 

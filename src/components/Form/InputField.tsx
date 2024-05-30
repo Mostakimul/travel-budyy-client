@@ -1,11 +1,12 @@
 'use client';
 
+import { HTMLInputTypeAttribute } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 
 type TInputFieldProps = {
   name: string;
   label: string;
-  type: string;
+  type: HTMLInputTypeAttribute | undefined;
   placeholder?: string;
   error?: string;
   required?: boolean;

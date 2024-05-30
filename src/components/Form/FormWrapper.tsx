@@ -32,7 +32,6 @@ const FormWrapper = ({
 
   const methods = useForm(formConfig);
   const submit: SubmitHandler<FieldValues> = (data) => {
-    console.log(data);
     onSubmit(data);
   };
   return (

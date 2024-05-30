@@ -3,8 +3,11 @@
 import FormWrapper from '@/components/Form/FormWrapper';
 import InputField from '@/components/Form/InputField';
 import TextareaField from '@/components/Form/TextAreaField';
+import { registerUser } from '@/services/actions/registerUser';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useRouter } from 'next/navigation';
 import { FieldValues } from 'react-hook-form';
+import { toast } from 'sonner';
 import { z } from 'zod';
 
 export const RegistervalidationSchema = z.object({
@@ -19,11 +22,34 @@ export const RegistervalidationSchema = z.object({
   password: z.string({
     required_error: 'Please enter a password!',
   }),
+  age: z.string(),
+  bio: z.string(),
 });
 
 const RegisterForm = () => {
-  const handleRegister = (data: FieldValues) => {
-    console.log(data);
+  const router = useRouter();
+  const handleRegister = async (data: FieldValues) => {
+    const modifiedData = {
+      name: data.name,
+      email: data.email,
+      password: data.password,
+      profile: {
+        bio: data.bio,
+        age: Number(data.age),
+      },
+    };
+
+    try {
+      const result = await registerUser(modifiedData);
+      console.log(result);
+      if (result.success) {
+        toast.success(result?.message);
+        router.push('/login');
+      }
+    } catch (error: any) {
+      console.log(error?.message);
+      toast.error(error?.message);
+    }
   };
 
   return (

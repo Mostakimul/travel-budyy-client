@@ -1,4 +1,5 @@
 import Footer from '@/components/Footer';
+import FeaturedDestinantion from '@/components/Home/FeaturedDestinantion';
 import HeroSection from '@/components/Home/HeroSection';
 import Searchbar from '@/components/Home/Searchbar';
 import TipsAndGuides from '@/components/Home/TipsAndGuides';
@@ -10,6 +11,7 @@ export default function Home() {
       <HeroSection />
       <Searchbar />
       <TravelPosts />
+      <FeaturedDestinantion />
       <TipsAndGuides />
       <Footer />
     </main>

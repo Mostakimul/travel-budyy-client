@@ -1,6 +1,7 @@
 import Navbar from '@/components/Navbar';
 import Providers from '@/lib/providers/Providers';
 import type { Metadata } from 'next';
+import { Toaster } from 'sonner';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -22,7 +23,12 @@ export default function RootLayout({
               <Navbar />
             </nav>
           </header>
-          <main className="h-screen">{children}</main>
+          <main className="h-screen">
+            <>
+              <Toaster />
+              {children}
+            </>
+          </main>
         </body>
       </html>
     </Providers>
