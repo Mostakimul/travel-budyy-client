@@ -1,17 +1,25 @@
-const Card = () => {
+import { TTrip } from '@/types';
+import Image from 'next/image';
+import Link from 'next/link';
+
+const Card = ({ post }: { post: TTrip }) => {
   return (
-    <div className="card w-96 glass">
+    <div className="card w-full bg-base-100 shadow-xl image-full">
       <figure>
-        <img
-          src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-          alt="car!"
+        <Image
+          src="/assets/cardBg.png"
+          alt="trip"
+          fill
+          className="rounded-md"
         />
       </figure>
       <div className="card-body">
-        <h2 className="card-title">Life hack</h2>
-        <p>How to park your car at your garage?</p>
+        <h2 className="card-title">{post.destination}</h2>
+        <p>{post.description.slice(0, 50)}...</p>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary">Learn now!</button>
+          <Link href={'/'} className="btn btn-primary">
+            Show Details
+          </Link>
         </div>
       </div>
     </div>
