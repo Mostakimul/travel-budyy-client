@@ -6,7 +6,7 @@ import { Controller, useFormContext } from 'react-hook-form';
 type TInputFieldProps = {
   name: string;
   label: string;
-  type: HTMLInputTypeAttribute | undefined;
+  type: HTMLInputTypeAttribute;
   placeholder?: string;
   error?: string;
   required?: boolean;
@@ -32,7 +32,7 @@ const InputField: React.FC<TInputFieldProps> = ({
               {...field}
               type={type}
               placeholder={placeholder}
-              className=" w-full max-w-xs"
+              className="w-full max-w-xs"
               required={required}
             />
           </label>
