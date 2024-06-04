@@ -1,12 +1,19 @@
 'use client';
-import { getUserInfo, isLoggedIn } from '@/services/auth.services';
+import { getUserInfo, isLoggedIn, removeUser } from '@/services/auth.services';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const Navbar = () => {
   const userInfo = getUserInfo();
 
-  console.log('userInfo', userInfo);
+  const router = useRouter();
+
+  const handleLogout = () => {
+    removeUser();
+    router.refresh();
+  };
+
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -70,7 +77,9 @@ const Navbar = () => {
               className="btn btn-ghost btn-circle avatar"
             >
               <div className="w-10 rounded-full">
-                <img
+                <Image
+                  height={50}
+                  width={50}
                   alt="Tailwind CSS Navbar component"
                   src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
                 />
@@ -84,7 +93,7 @@ const Navbar = () => {
                 <a className="justify-between">{userInfo?.name}</a>
               </li>
               <li>
-                <a>Logout</a>
+                <button onClick={handleLogout}>Logout</button>
               </li>
             </ul>
           </div>
