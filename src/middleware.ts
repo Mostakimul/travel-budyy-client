@@ -11,7 +11,7 @@ const commonPrivateRoutes = ['/dashboard', '/dashboard/change-password'];
 
 const roleBasedPrivateRoutes = {
   ADMIN: [/^\/dashboard\/admin/],
-  USER: [/^\/dashboard\/user/],
+  USER: [/^\/dashboard/],
 };
 
 export function middleware(request: NextRequest) {
@@ -36,13 +36,11 @@ export function middleware(request: NextRequest) {
   }
 
   let decodedData = null;
-
   if (accessToken) {
     decodedData = jwtDecode(accessToken) as any;
   }
 
   const role = decodedData?.role;
-
   if (role && roleBasedPrivateRoutes[role as Role]) {
     const routes = roleBasedPrivateRoutes[role as Role];
     if (routes.some((route) => pathname.match(route))) {
