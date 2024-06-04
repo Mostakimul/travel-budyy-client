@@ -29,7 +29,6 @@ const LoginForm = () => {
 
     try {
       const result = await userLogin(modifiedData);
-      console.log('result', result);
       if (result?.data?.accessToken) {
         toast.success(result?.message, {
           id: toastId,

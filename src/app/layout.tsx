@@ -1,4 +1,3 @@
-import Navbar from '@/components/Navbar';
 import Providers from '@/lib/providers/Providers';
 import type { Metadata } from 'next';
 import { Toaster } from 'sonner';
@@ -15,22 +14,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <Providers>
-      <html lang="en">
-        <body className="page-bg">
-          <header>
-            <nav>
-              <Navbar />
-            </nav>
-          </header>
-          <main className="h-screen">
-            <>
-              <Toaster />
-              {children}
-            </>
-          </main>
-        </body>
-      </html>
-    </Providers>
+    <html lang="en">
+      <body className="page-bg">
+        <Providers>
+          <Toaster />
+          {children}
+        </Providers>
+      </body>
+    </html>
   );
 }

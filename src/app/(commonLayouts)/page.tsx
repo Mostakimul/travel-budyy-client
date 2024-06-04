@@ -15,13 +15,13 @@ export default function Home() {
     },
   );
   return (
-    <main className="">
+    <div className="">
       <HeroSection />
       <Searchbar />
       <TravelPosts />
       <FeaturedDestinantion />
       <TipsAndGuides />
       <Footer />
-    </main>
+    </div>
   );
 }
