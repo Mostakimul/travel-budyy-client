@@ -8,7 +8,7 @@ const TravelPosts = async () => {
 
   let content = null;
 
-  if (travelPosts.success === true) {
+  if (travelPosts?.success === true) {
     content = travelPosts?.data?.map((post: TTrip) => (
       <Card key={post.id} post={post} />
     ));

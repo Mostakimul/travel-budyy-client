@@ -1,11 +1,19 @@
 import Footer from '@/components/Footer';
-import FeaturedDestinantion from '@/components/Home/FeaturedDestinantion';
 import HeroSection from '@/components/Home/HeroSection';
 import Searchbar from '@/components/Home/Searchbar';
 import TipsAndGuides from '@/components/Home/TipsAndGuides';
-import TravelPosts from '@/components/Home/TravelPosts';
+import dynamic from 'next/dynamic';
 
 export default function Home() {
+  const TravelPosts = dynamic(() => import('@/components/Home/TravelPosts'), {
+    ssr: false,
+  });
+  const FeaturedDestinantion = dynamic(
+    () => import('@/components/Home/FeaturedDestinantion'),
+    {
+      ssr: false,
+    },
+  );
   return (
     <main className="">
       <HeroSection />
