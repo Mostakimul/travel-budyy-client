@@ -1,3 +1,4 @@
+import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 
 export default function CommonLayout({
@@ -12,7 +13,8 @@ export default function CommonLayout({
           <Navbar />
         </nav>
       </header>
-      <main className="h-screen">{children}</main>
+      <main>{children}</main>
+      <Footer />
     </>
   );
 }

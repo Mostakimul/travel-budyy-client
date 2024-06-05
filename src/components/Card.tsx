@@ -17,7 +17,7 @@ const Card = ({ post }: { post: TTrip }) => {
         <h2 className="card-title">{post.destination}</h2>
         <p>{post.description.slice(0, 50)}...</p>
         <div className="card-actions justify-end">
-          <Link href={'/'} className="btn btn-primary">
+          <Link href={`/travels/${post.id}`} className="btn btn-primary">
             Show Details
           </Link>
         </div>

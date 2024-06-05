@@ -1,4 +1,3 @@
-import Footer from '@/components/Footer';
 import HeroSection from '@/components/Home/HeroSection';
 import Searchbar from '@/components/Home/Searchbar';
 import TipsAndGuides from '@/components/Home/TipsAndGuides';
@@ -21,7 +20,6 @@ export default function Home() {
       <TravelPosts />
       <FeaturedDestinantion />
       <TipsAndGuides />
-      <Footer />
     </div>
   );
 }

@@ -22,7 +22,7 @@ const FeaturedDestinantion = async () => {
       <div className="container mx-auto text-center">
         <h2 className="text-3xl font-bold mb-8">Featured Destinations</h2>
         <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-          {content}
+          {travelPosts && content}
         </div>
       </div>
     </section>
