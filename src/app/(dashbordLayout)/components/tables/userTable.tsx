@@ -1,12 +1,21 @@
+import { getUserInfo } from '@/services/auth.services';
 import { TUser } from '@/types';
+import { TChangeRole } from '../../dashboard/admin/users/all-user/page';
 
 type TUserTableProps = {
   row: TUser;
   handleBlock?: (email: string) => void;
   handleUnblock?: (email: string) => void;
+  handleChangeRole?: (data: TChangeRole) => void;
 };
 
-const UserTable = ({ row, handleBlock, handleUnblock }: TUserTableProps) => {
+const UserTable = ({
+  row,
+  handleBlock,
+  handleUnblock,
+  handleChangeRole,
+}: TUserTableProps) => {
+  const user = getUserInfo();
   return (
     <tr className="hover hover:text-gray-900">
       <td>{row.name}</td>
@@ -23,23 +32,34 @@ const UserTable = ({ row, handleBlock, handleUnblock }: TUserTableProps) => {
               Edit
             </button>
 
-            <button
-              className="btn btn-sm btn-outline btn-accent"
-              onClick={() => {}}
-            >
-              Change Role
-            </button>
-            <button
-              className="btn btn-sm btn-outline btn-info"
-              onClick={() => handleBlock && handleBlock(row.email)}
-            >
-              Block
-            </button>
+            {user?.email !== row.email && (
+              <>
+                <button
+                  className="btn btn-sm btn-outline btn-accent"
+                  onClick={() => {
+                    handleChangeRole &&
+                      handleChangeRole({ email: row.email, role: row.role });
+                  }}
+                >
+                  Change Role
+                </button>
+                <button
+                  className="btn btn-sm btn-outline btn-info"
+                  onClick={() => {
+                    handleBlock && handleBlock(row.email);
+                  }}
+                >
+                  Block
+                </button>
+              </>
+            )}
           </>
         ) : (
           <button
             className="btn btn-sm btn-outline btn-info"
-            onClick={() => handleUnblock && handleUnblock(row.email)}
+            onClick={() => {
+              handleUnblock && handleUnblock(row.email);
+            }}
           >
             Unblock
           </button>

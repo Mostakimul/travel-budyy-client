@@ -2,10 +2,19 @@
 import Error from '@/app/(dashbordLayout)/components/error';
 import Pagination from '@/app/(dashbordLayout)/components/pagination';
 import UserTable from '@/app/(dashbordLayout)/components/tables/userTable';
-import { useBlockUserMutation, useGetAllUserQuery } from '@/redux/api/userApi';
+import {
+  useBlockUserMutation,
+  useChangeRoleMutation,
+  useGetAllUserQuery,
+} from '@/redux/api/userApi';
 import { TUser } from '@/types';
 import { useState } from 'react';
 import { toast } from 'sonner';
+
+export type TChangeRole = {
+  email: string;
+  role: string;
+};
 
 const AllUser = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -14,6 +23,7 @@ const AllUser = () => {
     limit: 10,
   });
   const [blockUser] = useBlockUserMutation();
+  const [changeRole] = useChangeRoleMutation();
   const users = data?.users;
 
   const handlePageChange = (page: number) => {
@@ -24,6 +34,19 @@ const AllUser = () => {
     const result = await blockUser({ email: email });
     if (result.data) {
       toast.success('User blocked successfully!');
+    } else {
+      toast.error('Something went wrong!');
+    }
+  };
+
+  const handleChangeRole = async (data: TChangeRole) => {
+    let modifiedData = {
+      ...data,
+      role: data.role === 'ADMIN' ? 'USER' : 'ADMIN',
+    };
+    const result = await changeRole(modifiedData);
+    if (result.data) {
+      toast.success('User role changed successfully!');
     } else {
       toast.error('Something went wrong!');
     }
@@ -40,7 +63,12 @@ const AllUser = () => {
     );
   } else if (!isLoading && !isError && users) {
     content = users.map((item: TUser) => (
-      <UserTable key={item.id} row={item} handleBlock={handleBlockUser} />
+      <UserTable
+        key={item.id}
+        row={item}
+        handleBlock={handleBlockUser}
+        handleChangeRole={handleChangeRole}
+      />
     ));
   }
   return (
