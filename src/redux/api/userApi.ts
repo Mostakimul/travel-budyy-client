@@ -111,6 +111,15 @@ export const userApi = baseApi.injectEndpoints({
       },
       invalidatesTags: ['users', 'user', 'blocked-users'],
     }),
+    changePassword: build.mutation({
+      query: (data) => {
+        return {
+          url: `/auth/change-password`,
+          method: 'POST',
+          data: data,
+        };
+      },
+    }),
   }),
 });
 
@@ -126,4 +135,5 @@ export const {
   useGetBlockedUsersQuery,
   useGetSingleUserQuery,
   useUpdateUserMutation,
+  useChangePasswordMutation,
 } = userApi;

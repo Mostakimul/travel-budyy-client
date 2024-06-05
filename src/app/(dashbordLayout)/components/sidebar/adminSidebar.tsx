@@ -49,6 +49,11 @@ const AdminSidebar = () => {
             <li>
               <Link href={'/dashboard/admin/my-profile'}>My Profile</Link>
             </li>
+            <li>
+              <Link href={'/dashboard/admin/change-password'}>
+                Change Password
+              </Link>
+            </li>
           </ul>
         </details>
       </li>
