@@ -13,6 +13,7 @@ type TFormConfig = {
 type TFormWrapperProps = {
   children: React.ReactNode;
   onSubmit: SubmitHandler<FieldValues>;
+  resetOnSubmit?: boolean;
 } & TFormConfig;
 
 const FormWrapper = ({
@@ -20,6 +21,7 @@ const FormWrapper = ({
   onSubmit,
   resolver,
   defaultValues,
+  resetOnSubmit = false,
 }: TFormWrapperProps) => {
   const formConfig: TFormConfig = {};
 
@@ -31,8 +33,12 @@ const FormWrapper = ({
   }
 
   const methods = useForm(formConfig);
+
   const submit: SubmitHandler<FieldValues> = (data) => {
     onSubmit(data);
+    if (resetOnSubmit) {
+      methods.reset();
+    }
   };
   return (
     <FormProvider {...methods}>
