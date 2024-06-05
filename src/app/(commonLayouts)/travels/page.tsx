@@ -21,7 +21,7 @@ const Travels = () => {
       <h1 className="text-2xl font-bold mb-4">Trips</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {data &&
-          data.trips.map((trip) => (
+          data?.trips?.map((trip) => (
             <div key={trip.id} className="card w-full bg-base-100 shadow-xl">
               <div className="card-body">
                 <h2 className="card-title text-xl font-bold">
