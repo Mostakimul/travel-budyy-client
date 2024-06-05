@@ -32,7 +32,7 @@ const AdminSidebar = () => {
           <summary className="mb-2">Trip Management</summary>
           <ul>
             <li>
-              <a>All Trips</a>
+              <Link href={'/dashboard/admin/trips/all-trip'}>All Trips</Link>
             </li>
           </ul>
         </details>
