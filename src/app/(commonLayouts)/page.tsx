@@ -1,5 +1,4 @@
 import HeroSection from '@/components/Home/HeroSection';
-import Searchbar from '@/components/Home/Searchbar';
 import TipsAndGuides from '@/components/Home/TipsAndGuides';
 import dynamic from 'next/dynamic';
 
@@ -16,7 +15,6 @@ export default function Home() {
   return (
     <div className="">
       <HeroSection />
-      <Searchbar />
       <TravelPosts />
       <FeaturedDestinantion />
       <TipsAndGuides />
