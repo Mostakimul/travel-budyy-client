@@ -1,10 +1,12 @@
+'use client';
 import { TTrip } from '@/types';
 import Link from 'next/link';
 type TTripTableProps = {
   row: TTrip;
+  handleDisable?: (id: string) => void;
 };
 
-const TripTable = ({ row }: TTripTableProps) => {
+const TripTable = ({ row, handleDisable }: TTripTableProps) => {
   return (
     <tr className="hover hover:text-gray-900">
       <td>{row.destination}</td>
@@ -20,7 +22,12 @@ const TripTable = ({ row }: TTripTableProps) => {
         >
           Show Details
         </Link>
-        <button className="btn btn-sm btn-outline btn-error">Disable</button>
+        <button
+          onClick={() => handleDisable && handleDisable(row.id)}
+          className="btn btn-sm btn-outline btn-error"
+        >
+          Disable
+        </button>
       </td>
     </tr>
   );
