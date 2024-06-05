@@ -1,5 +1,3 @@
-'use server';
-
 import setAccessToken from './setAccessToken';
 
 export const userLogin = async (userData: any) => {
@@ -8,10 +6,10 @@ export const userLogin = async (userData: any) => {
     {
       method: 'POST',
       body: JSON.stringify(userData),
-      cache: 'no-store',
       headers: {
         'Content-Type': 'application/json',
       },
+      credentials: 'include',
     },
   );
   const userInfo = await response.json();

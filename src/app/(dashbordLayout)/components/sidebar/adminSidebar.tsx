@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 const AdminSidebar = () => {
   return (
     <ul className="menu bg-base-200 w-56 h-full p-4 gap-2">
@@ -9,13 +11,13 @@ const AdminSidebar = () => {
           <summary className="mb-2">User Management</summary>
           <ul>
             <li>
-              <a>All Users</a>
+              <Link href={'/dashboard/admin/users/all-user'}>All Users</Link>
             </li>
             <li>
-              <a>Add Users</a>
+              <Link href={'/dashboard/admin/users/add-user'}>Add Users</Link>
             </li>
             <li>
-              <a>Add Admin</a>
+              <Link href={'/dashboard/admin/users/add-admin'}>Add Admin</Link>
             </li>
           </ul>
         </details>
