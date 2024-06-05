@@ -7,5 +7,12 @@ export const baseApi = createApi({
     baseUrl: process.env.NEXT_PUBLIC_APP_API_URL as string,
   }),
   endpoints: () => ({}),
-  tagTypes: ['users', 'user', 'blocked-users', 'trips', 'trip'],
+  tagTypes: [
+    'users',
+    'user',
+    'blocked-users',
+    'trips',
+    'trip',
+    'deactive-trips',
+  ],
 });

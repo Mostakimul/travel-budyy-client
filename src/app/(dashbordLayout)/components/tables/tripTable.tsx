@@ -4,9 +4,10 @@ import Link from 'next/link';
 type TTripTableProps = {
   row: TTrip;
   handleDisable?: (id: string) => void;
+  handleActive?: (id: string) => void;
 };
 
-const TripTable = ({ row, handleDisable }: TTripTableProps) => {
+const TripTable = ({ row, handleDisable, handleActive }: TTripTableProps) => {
   return (
     <tr className="hover hover:text-gray-900">
       <td>{row.destination}</td>
@@ -15,19 +16,30 @@ const TripTable = ({ row, handleDisable }: TTripTableProps) => {
       <td>{row.user.name}</td>
 
       <td className="space-x-2">
-        <button className="btn btn-sm btn-outline btn-info">Edit</button>
-        <Link
-          href={`/dashboard/admin/trips/${row.id}`}
-          className="btn btn-sm btn-outline btn-primary"
-        >
-          Show Details
-        </Link>
-        <button
-          onClick={() => handleDisable && handleDisable(row.id)}
-          className="btn btn-sm btn-outline btn-error"
-        >
-          Disable
-        </button>
+        {row.tripStatus === 'ACTIVE' ? (
+          <>
+            <button className="btn btn-sm btn-outline btn-info">Edit</button>
+            <Link
+              href={`/dashboard/admin/trips/${row.id}`}
+              className="btn btn-sm btn-outline btn-primary"
+            >
+              Show Details
+            </Link>
+            <button
+              onClick={() => handleDisable && handleDisable(row.id)}
+              className="btn btn-sm btn-outline btn-error"
+            >
+              Disable
+            </button>
+          </>
+        ) : (
+          <button
+            onClick={() => handleActive && handleActive(row.id)}
+            className="btn btn-sm btn-outline btn-error"
+          >
+            Activate
+          </button>
+        )}
       </td>
     </tr>
   );

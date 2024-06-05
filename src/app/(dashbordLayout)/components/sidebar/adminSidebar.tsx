@@ -34,6 +34,11 @@ const AdminSidebar = () => {
             <li>
               <Link href={'/dashboard/admin/trips/all-trip'}>All Trips</Link>
             </li>
+            <li>
+              <Link href={'/dashboard/admin/trips/deactivated-trips'}>
+                Deactive Trips
+              </Link>
+            </li>
           </ul>
         </details>
       </li>

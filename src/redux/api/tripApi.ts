@@ -17,7 +17,20 @@ export const tripApi = baseApi.injectEndpoints({
       },
       providesTags: ['trips'],
     }),
-
+    getAllDeactiveTrip: build.query({
+      query: (arg: Record<string, any>) => ({
+        url: '/trip/deactive',
+        method: 'GET',
+        params: arg,
+      }),
+      transformResponse: (response: TTrip[], meta: TMeta) => {
+        return {
+          trips: response,
+          meta,
+        };
+      },
+      providesTags: ['deactive-trips'],
+    }),
     createTrip: build.mutation({
       query: (data) => ({
         url: '/trip',
@@ -41,7 +54,7 @@ export const tripApi = baseApi.injectEndpoints({
           data: data,
         };
       },
-      invalidatesTags: ['trips', 'trip'],
+      invalidatesTags: ['trips', 'trip', 'deactive-trips'],
     }),
     joinBuddyReq: build.mutation({
       query: (id) => {
@@ -61,4 +74,5 @@ export const {
   useGetSingleTripQuery,
   useJoinBuddyReqMutation,
   useUpdateTripMutation,
+  useGetAllDeactiveTripQuery,
 } = tripApi;
