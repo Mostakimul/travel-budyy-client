@@ -1,4 +1,5 @@
 import { TTrip } from '@/types';
+import Link from 'next/link';
 type TTripTableProps = {
   row: TTrip;
 };
@@ -13,9 +14,12 @@ const TripTable = ({ row }: TTripTableProps) => {
 
       <td className="space-x-2">
         <button className="btn btn-sm btn-outline btn-info">Edit</button>
-        <button className="btn btn-sm btn-outline btn-primary">
+        <Link
+          href={`/dashboard/admin/trips/${row.id}`}
+          className="btn btn-sm btn-outline btn-primary"
+        >
           Show Details
-        </button>
+        </Link>
         <button className="btn btn-sm btn-outline btn-error">Disable</button>
       </td>
     </tr>

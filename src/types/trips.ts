@@ -9,6 +9,10 @@ export type TBuddyRequest = {
   updatedAt: string;
 };
 
+export type TBuddyRequestUser = TBuddyRequest & {
+  user: TUser;
+};
+
 export type TTrip = {
   id: string;
   userId: string;
