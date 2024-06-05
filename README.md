@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## How to Run Locally
 
-## Getting Started
+##### Backend API Link: https://travel-buddy-server-smoky.vercel.app/
 
-First, run the development server:
+##### Frontend Link: https://travel-budyy-client.vercel.app/
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+##### Backend Repo Link: https://github.com/Mostakimul/travel-buddy-server
+
+### Clone the repository:
+
+```
+git clone https://github.com/Mostakimul/travel-budyy-client.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Install dependencies:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+cd travel-budyy-client
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Set up environment variables:
 
-## Learn More
+Create a .env file in the root directory and add the following:
 
-To learn more about Next.js, take a look at the following resources:
+```
+NEXT_PUBLIC_APP_API_URL="https://travel-buddy-server-sigma.vercel.app/api/v1"
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Run the server:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```
+npm run dev
+```
 
-## Deploy on Vercel
+# Travel Buddy Frontend
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Travel buddy is web server api where you can add your trip and find a travel buddy who can join you!
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Technologies Used
+
+- Next js
+- Axios
+- redux Toolkit
+- React Hook Form
+- Daisy UI
+- zod
+- bcrypt
+- JSON Web Tokens (JWT) for authentication
+
+## API Documentation
+
+- https://documenter.getpostman.com/view/16306758/2sA3QzZU32
