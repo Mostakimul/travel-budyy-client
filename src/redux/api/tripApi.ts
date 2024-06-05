@@ -65,6 +65,16 @@ export const tripApi = baseApi.injectEndpoints({
       },
       invalidatesTags: ['trips', 'trip'],
     }),
+    updateTravelReq: build.mutation({
+      query: ({ data, id }) => {
+        return {
+          url: `/travel-buddy/respond/${id}`,
+          method: 'PUT',
+          data: data,
+        };
+      },
+      invalidatesTags: ['trips', 'trip'],
+    }),
   }),
 });
 
@@ -75,4 +85,5 @@ export const {
   useJoinBuddyReqMutation,
   useUpdateTripMutation,
   useGetAllDeactiveTripQuery,
+  useUpdateTravelReqMutation,
 } = tripApi;
