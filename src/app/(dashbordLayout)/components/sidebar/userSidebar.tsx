@@ -16,11 +16,6 @@ const UserSidebar = () => {
             <li>
               <Link href={'/dashboard/trips/create-trip'}>Add Trip</Link>
             </li>
-            <li>
-              <Link href={'/dashboard/trips/deactive-trips'}>
-                Deactive Trips
-              </Link>
-            </li>
           </ul>
         </details>
       </li>

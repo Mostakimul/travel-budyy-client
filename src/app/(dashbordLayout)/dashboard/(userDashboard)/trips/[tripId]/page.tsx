@@ -4,7 +4,7 @@ import { useGetSingleTripQuery } from '@/redux/api/tripApi';
 const SingleTrip = ({ params }: { params: { tripId: string } }) => {
   const { data: trip } = useGetSingleTripQuery(params.tripId);
   return (
-    <div className="flex flex-col w-full my-5 gap-5">
+    <div className="flex flex-col w-full my-5 gap-5 text-base-200">
       <div className="grid h-20 card rounded-box place-items-center ">
         <h1 className="text-3xl font-bold">Trip Details</h1>
       </div>
