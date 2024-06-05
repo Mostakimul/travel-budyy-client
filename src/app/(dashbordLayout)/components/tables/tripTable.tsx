@@ -1,4 +1,4 @@
-'use client';
+import { getUserInfo } from '@/services/auth.services';
 import { TTrip } from '@/types';
 import Link from 'next/link';
 type TTripTableProps = {
@@ -8,6 +8,7 @@ type TTripTableProps = {
 };
 
 const TripTable = ({ row, handleDisable, handleActive }: TTripTableProps) => {
+  const user = getUserInfo();
   return (
     <tr className="hover hover:text-gray-900">
       <td>{row.destination}</td>
@@ -18,24 +19,39 @@ const TripTable = ({ row, handleDisable, handleActive }: TTripTableProps) => {
       <td className="space-x-2">
         {row.tripStatus === 'ACTIVE' ? (
           <>
+            {(user.role === 'admin' ||
+              user.role === 'super_admin' ||
+              user.email === row.user.email) && (
+              <>
+                <Link
+                  href={
+                    user.role === 'user'
+                      ? `/dashboard/trips/edit/${row.id}`
+                      : `/dashboard/admin/trips/edit/${row.id}`
+                  }
+                  className="btn btn-sm btn-outline btn-info"
+                >
+                  Edit
+                </Link>
+                <button
+                  onClick={() => handleDisable && handleDisable(row.id)}
+                  className="btn btn-sm btn-outline btn-error"
+                >
+                  Disable
+                </button>
+              </>
+            )}
+
             <Link
-              href={`/dashboard/admin/trips/edit/${row.id}`}
-              className="btn btn-sm btn-outline btn-info"
-            >
-              Edit
-            </Link>
-            <Link
-              href={`/dashboard/admin/trips/${row.id}`}
+              href={
+                user.role === 'user'
+                  ? `/dashboard/trips/${row.id}`
+                  : `/dashboard/admin/trips/${row.id}`
+              }
               className="btn btn-sm btn-outline btn-primary"
             >
               Show Details
             </Link>
-            <button
-              onClick={() => handleDisable && handleDisable(row.id)}
-              className="btn btn-sm btn-outline btn-error"
-            >
-              Disable
-            </button>
           </>
         ) : (
           <button

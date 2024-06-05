@@ -12,13 +12,14 @@ export type TChangeRole = {
   role: string;
 };
 
-const AllTrips = () => {
+const AllTrip = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const { data, isError, isLoading } = useGetAllTripQuery({
     page: currentPage,
     limit: 10,
   });
   const [updateTrip] = useUpdateTripMutation();
+
   const trips = data?.trips;
 
   const handlePageChange = (page: number) => {
@@ -52,7 +53,7 @@ const AllTrips = () => {
     ));
   }
   return (
-    <div className="flex flex-col w-full my-5 gap-5">
+    <div className="flex flex-col w-full my-5 gap-5 text-base-200">
       <div className="grid h-20 card rounded-box place-items-center ">
         <h1 className="text-3xl font-bold">All Trips</h1>
       </div>
@@ -83,4 +84,4 @@ const AllTrips = () => {
   );
 };
 
-export default AllTrips;
+export default AllTrip;

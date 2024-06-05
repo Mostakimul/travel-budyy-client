@@ -1,6 +1,9 @@
 'use client';
 
+import LogoutButton from '@/app/(dashbordLayout)/components/admin/logoutButton';
+import NameAndRole from '@/app/(dashbordLayout)/components/admin/nameAndRole';
 import UserSidebar from '@/app/(dashbordLayout)/components/sidebar/userSidebar';
+import { useRouter } from 'next/navigation';
 import React from 'react';
 import { RiAlignJustify } from 'react-icons/ri';
 
@@ -9,6 +12,8 @@ interface Props {
 }
 
 export const UserLayout = ({ children }: Props) => {
+  const router = useRouter();
+
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -25,7 +30,13 @@ export const UserLayout = ({ children }: Props) => {
 
         {/* Page goes here */}
 
-        <div className="w-full h-full p-2">{children}</div>
+        <div className="w-full h-full p-2">
+          <div className="flex items-center justify-end gap-5 bg-gray-800 py-2 rounded-md">
+            <NameAndRole />
+            <LogoutButton router={router} />
+          </div>
+          {children}
+        </div>
       </div>
       <div className="drawer-side md:m-2 md:rounded-md shadow-md">
         <label

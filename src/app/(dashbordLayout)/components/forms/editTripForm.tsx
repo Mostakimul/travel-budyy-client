@@ -1,6 +1,7 @@
 import FormWrapper from '@/components/Form/FormWrapper';
 import InputField from '@/components/Form/InputField';
 import { useUpdateTripMutation } from '@/redux/api/tripApi';
+import { getUserInfo } from '@/services/auth.services';
 import { TTrip } from '@/types';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
@@ -23,6 +24,7 @@ const updateTripValidationSchema = z.object({
 });
 
 const EditTripForm = ({ trip }: TEditTripFormProps) => {
+  const user = getUserInfo();
   const router = useRouter();
   const [updateTrip] = useUpdateTripMutation();
   const defaultValues = {
@@ -50,7 +52,9 @@ const EditTripForm = ({ trip }: TEditTripFormProps) => {
       const result = await updateTrip({ data: modifiedData, id: trip.id });
       if (result.data) {
         toast.success('Trip updated successfully!');
-        router.push('/dashboard/admin/trips/all-trip');
+        user.role === 'user'
+          ? router.push('/dashboard/trips/all-trip')
+          : router.push('/dashboard/admin/trips/all-trip');
       }
     } catch (error: any) {
       console.log(error?.message);

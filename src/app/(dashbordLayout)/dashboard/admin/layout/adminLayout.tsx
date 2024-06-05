@@ -1,11 +1,10 @@
 'use client';
 
+import LogoutButton from '@/app/(dashbordLayout)/components/admin/logoutButton';
 import NameAndRole from '@/app/(dashbordLayout)/components/admin/nameAndRole';
 import AdminSidebar from '@/app/(dashbordLayout)/components/sidebar/adminSidebar';
-import { logoutUser } from '@/services/actions/logoutUser';
 import { useRouter } from 'next/navigation';
 import React from 'react';
-import { FaSignOutAlt } from 'react-icons/fa';
 import { RiAlignJustify } from 'react-icons/ri';
 
 interface Props {
@@ -14,9 +13,7 @@ interface Props {
 
 export const AdminLayout = ({ children }: Props) => {
   const router = useRouter();
-  const handleLogout = () => {
-    logoutUser(router);
-  };
+
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -35,13 +32,7 @@ export const AdminLayout = ({ children }: Props) => {
         <div className="w-full h-full p-2 text-base-100">
           <div className="flex items-center justify-end gap-5 bg-gray-800 py-2 rounded-md">
             <NameAndRole />
-            <button
-              onClick={handleLogout}
-              className="badge badge-error badge-outline flex items-center gap-2 mx-2 cursor-pointer"
-            >
-              <FaSignOutAlt />
-              Logout
-            </button>
+            <LogoutButton router={router} />
           </div>
           {children}
         </div>
