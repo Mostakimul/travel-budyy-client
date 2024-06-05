@@ -19,6 +19,11 @@ const AdminSidebar = () => {
             <li>
               <Link href={'/dashboard/admin/users/add-admin'}>Add Admin</Link>
             </li>
+            <li>
+              <Link href={'/dashboard/admin/users/blocked-users'}>
+                Blocked Users
+              </Link>
+            </li>
           </ul>
         </details>
       </li>

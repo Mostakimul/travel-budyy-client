@@ -17,6 +17,20 @@ export const userApi = baseApi.injectEndpoints({
       },
       providesTags: ['users'],
     }),
+    getBlockedUsers: build.query({
+      query: (arg: Record<string, any>) => ({
+        url: '/user/blocked',
+        method: 'GET',
+        params: arg,
+      }),
+      transformResponse: (response: TUser[], meta: TMeta) => {
+        return {
+          users: response,
+          meta,
+        };
+      },
+      providesTags: ['blocked-users'],
+    }),
     createUser: build.mutation({
       query: (data) => ({
         url: '/user/register',
@@ -68,7 +82,7 @@ export const userApi = baseApi.injectEndpoints({
           data: data,
         };
       },
-      invalidatesTags: ['users', 'user'],
+      invalidatesTags: ['users', 'user', 'blocked-users'],
     }),
     unblockUser: build.mutation({
       query: (data) => {
@@ -78,7 +92,7 @@ export const userApi = baseApi.injectEndpoints({
           data: data,
         };
       },
-      invalidatesTags: ['users', 'user'],
+      invalidatesTags: ['users', 'user', 'blocked-users'],
     }),
   }),
 });
@@ -92,4 +106,5 @@ export const {
   useChangeRoleMutation,
   useBlockUserMutation,
   useUnblockUserMutation,
+  useGetBlockedUsersQuery,
 } = userApi;

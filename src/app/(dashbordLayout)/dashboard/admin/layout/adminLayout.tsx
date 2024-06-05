@@ -1,8 +1,8 @@
 'use client';
 
+import NameAndRole from '@/app/(dashbordLayout)/components/admin/nameAndRole';
 import AdminSidebar from '@/app/(dashbordLayout)/components/sidebar/adminSidebar';
 import { logoutUser } from '@/services/actions/logoutUser';
-import { getUserInfo } from '@/services/auth.services';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 import { FaSignOutAlt } from 'react-icons/fa';
@@ -13,7 +13,6 @@ interface Props {
 }
 
 export const AdminLayout = ({ children }: Props) => {
-  const userInfo = getUserInfo();
   const router = useRouter();
   const handleLogout = () => {
     logoutUser(router);
@@ -36,12 +35,7 @@ export const AdminLayout = ({ children }: Props) => {
 
         <div className="w-full h-full p-2 text-base-100">
           <div className="flex items-center justify-end gap-5 bg-gray-800 py-2 rounded-md">
-            <p className="badge badge-secondary badge-outline">
-              Name: {userInfo.name}
-            </p>
-            <p className="badge badge-accent badge-outline">
-              Role: {userInfo.role}
-            </p>
+            <NameAndRole />
             <button
               onClick={handleLogout}
               className="badge badge-error badge-outline flex items-center gap-2 mx-2 cursor-pointer"
