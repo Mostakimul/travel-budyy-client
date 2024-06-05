@@ -33,8 +33,6 @@ const AllUser = () => {
       <UserTable key={item.id} row={item} />
     ));
   }
-
-  console.log(data);
   return (
     <div className="flex flex-col w-full my-5 gap-5">
       <div className="grid h-20 card rounded-box place-items-center ">
