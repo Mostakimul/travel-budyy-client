@@ -47,7 +47,7 @@ const AdminSidebar = () => {
           <summary className="mb-2">Profile Management</summary>
           <ul>
             <li>
-              <a>My Profile</a>
+              <Link href={'/dashboard/admin/my-profile'}>My Profile</Link>
             </li>
           </ul>
         </details>
