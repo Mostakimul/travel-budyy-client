@@ -10,6 +10,7 @@ type TInputFieldProps = {
   placeholder?: string;
   error?: string;
   required?: boolean;
+  disabled?: boolean;
 };
 
 const InputField: React.FC<TInputFieldProps> = ({
@@ -18,6 +19,7 @@ const InputField: React.FC<TInputFieldProps> = ({
   type,
   placeholder = 'Type here',
   required,
+  disabled,
 }) => {
   const { control } = useFormContext();
   return (
@@ -34,6 +36,7 @@ const InputField: React.FC<TInputFieldProps> = ({
               placeholder={placeholder}
               className="w-full max-w-xs"
               required={required}
+              disabled={disabled}
             />
           </label>
           {error && (

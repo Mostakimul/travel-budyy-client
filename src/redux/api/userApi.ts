@@ -54,10 +54,27 @@ export const userApi = baseApi.injectEndpoints({
       }),
       providesTags: ['user'],
     }),
+    getSingleUser: build.query({
+      query: (id) => ({
+        url: `/user/${id}`,
+        method: 'GET',
+      }),
+      providesTags: ['user'],
+    }),
     updateProfile: build.mutation({
       query: (data) => {
         return {
           url: `/user/profile`,
+          method: 'PUT',
+          data: data,
+        };
+      },
+      invalidatesTags: ['users', 'user'],
+    }),
+    updateUser: build.mutation({
+      query: (data) => {
+        return {
+          url: `/user/update`,
           method: 'PUT',
           data: data,
         };
@@ -107,4 +124,6 @@ export const {
   useBlockUserMutation,
   useUnblockUserMutation,
   useGetBlockedUsersQuery,
+  useGetSingleUserQuery,
+  useUpdateUserMutation,
 } = userApi;

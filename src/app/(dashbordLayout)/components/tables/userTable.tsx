@@ -1,5 +1,6 @@
 import { getUserInfo } from '@/services/auth.services';
 import { TUser } from '@/types';
+import Link from 'next/link';
 import { TChangeRole } from '../../dashboard/admin/users/all-user/page';
 
 type TUserTableProps = {
@@ -16,6 +17,11 @@ const UserTable = ({
   handleChangeRole,
 }: TUserTableProps) => {
   const user = getUserInfo();
+  // const router = useRouter()
+  // const handleEdit = () => {
+  //   router
+  // }
+
   return (
     <tr className="hover hover:text-gray-900">
       <td>{row.name}</td>
@@ -25,12 +31,12 @@ const UserTable = ({
       <td className="space-x-3">
         {row.status === 'ACTIVE' ? (
           <>
-            <button
-              onClick={() => {}}
+            <Link
+              href={`/dashboard/admin/users/${row.id}`}
               className="btn btn-sm btn-outline btn-primary"
             >
               Edit
-            </button>
+            </Link>
 
             {user?.email !== row.email && (
               <>
