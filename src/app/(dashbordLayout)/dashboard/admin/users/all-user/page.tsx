@@ -2,9 +2,10 @@
 import Error from '@/app/(dashbordLayout)/components/error';
 import Pagination from '@/app/(dashbordLayout)/components/pagination';
 import UserTable from '@/app/(dashbordLayout)/components/tables/userTable';
-import { useGetAllUserQuery } from '@/redux/api/userApi';
+import { useBlockUserMutation, useGetAllUserQuery } from '@/redux/api/userApi';
 import { TUser } from '@/types';
 import { useState } from 'react';
+import { toast } from 'sonner';
 
 const AllUser = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -12,12 +13,21 @@ const AllUser = () => {
     page: currentPage,
     limit: 10,
   });
+  const [blockUser] = useBlockUserMutation();
+  const users = data?.users;
+
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
 
-  const users = data?.users;
-  const meta = data?.meta;
+  const handleBlockUser = async (email: string) => {
+    const result = await blockUser({ email: email });
+    if (result.data) {
+      toast.success('User blocked successfully!');
+    } else {
+      toast.error('Something went wrong!');
+    }
+  };
 
   let content = null;
   if (isLoading && !isError) {
@@ -30,7 +40,7 @@ const AllUser = () => {
     );
   } else if (!isLoading && !isError && users) {
     content = users.map((item: TUser) => (
-      <UserTable key={item.id} row={item} />
+      <UserTable key={item.id} row={item} handleBlock={handleBlockUser} />
     ));
   }
   return (

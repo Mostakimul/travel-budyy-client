@@ -2,9 +2,10 @@ import { TUser } from '@/types';
 
 type TUserTableProps = {
   row: TUser;
+  handleBlock: (email: string) => void;
 };
 
-const UserTable = ({ row }: TUserTableProps) => {
+const UserTable = ({ row, handleBlock }: TUserTableProps) => {
   return (
     <tr className="hover hover:text-gray-900">
       <td>{row.name}</td>
@@ -18,9 +19,6 @@ const UserTable = ({ row }: TUserTableProps) => {
         >
           Edit
         </button>
-        <button onClick={() => {}} className="btn btn-sm btn-outline btn-error">
-          Delete
-        </button>
 
         <button
           className="btn btn-sm btn-outline btn-accent"
@@ -28,7 +26,10 @@ const UserTable = ({ row }: TUserTableProps) => {
         >
           Change Role
         </button>
-        <button className="btn btn-sm btn-outline btn-info" onClick={() => {}}>
+        <button
+          className="btn btn-sm btn-outline btn-info"
+          onClick={() => handleBlock(row.email)}
+        >
           Block
         </button>
       </td>

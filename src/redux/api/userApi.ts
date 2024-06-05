@@ -44,7 +44,7 @@ export const userApi = baseApi.injectEndpoints({
       query: (data) => {
         return {
           url: `/user/profile`,
-          method: 'PATCH',
+          method: 'PUT',
           data: data,
         };
       },
@@ -54,7 +54,7 @@ export const userApi = baseApi.injectEndpoints({
       query: (data) => {
         return {
           url: `/user/change-role`,
-          method: 'PATCH',
+          method: 'PUT',
           data: data,
         };
       },
@@ -64,7 +64,7 @@ export const userApi = baseApi.injectEndpoints({
       query: (data) => {
         return {
           url: `/user/block-user`,
-          method: 'PATCH',
+          method: 'PUT',
           data: data,
         };
       },
@@ -74,7 +74,7 @@ export const userApi = baseApi.injectEndpoints({
       query: (data) => {
         return {
           url: `/user/unblock-user`,
-          method: 'PATCH',
+          method: 'PUT',
           data: data,
         };
       },
