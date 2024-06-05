@@ -32,7 +32,6 @@ export const AdminLayout = ({ children }: Props) => {
         </div>
 
         {/* Page goes here */}
-
         <div className="w-full h-full p-2 text-base-100">
           <div className="flex items-center justify-end gap-5 bg-gray-800 py-2 rounded-md">
             <NameAndRole />

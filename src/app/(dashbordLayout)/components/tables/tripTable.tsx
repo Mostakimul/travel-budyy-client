@@ -18,7 +18,12 @@ const TripTable = ({ row, handleDisable, handleActive }: TTripTableProps) => {
       <td className="space-x-2">
         {row.tripStatus === 'ACTIVE' ? (
           <>
-            <button className="btn btn-sm btn-outline btn-info">Edit</button>
+            <Link
+              href={`/dashboard/admin/trips/edit/${row.id}`}
+              className="btn btn-sm btn-outline btn-info"
+            >
+              Edit
+            </Link>
             <Link
               href={`/dashboard/admin/trips/${row.id}`}
               className="btn btn-sm btn-outline btn-primary"
