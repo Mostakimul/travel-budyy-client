@@ -14,7 +14,7 @@ export const storeUserInfo = ({ accessToken }: { accessToken: string }) => {
 
 export const getUserInfo = () => {
   const authToken = getFromLocalStorage(authKey);
-  if (authToken) {
+  if (authToken !== undefined && authToken !== null && authToken !== '') {
     const decodedData: any = decodedToken(authToken);
     return {
       ...decodedData,
@@ -27,7 +27,7 @@ export const getUserInfo = () => {
 
 export const isLoggedIn = () => {
   const authToken = getFromLocalStorage(authKey);
-  if (authToken) {
+  if (authToken !== undefined && authToken !== null && authToken !== '') {
     return !!authToken;
   }
 };

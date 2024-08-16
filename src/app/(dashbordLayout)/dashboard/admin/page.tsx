@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 const AdminHomePage = () => {
   return (
-    <div className="text-base-200">
+    <div className="text-base-200 min-h-screen">
       <p>AdminDashboard</p>
 
       <Link href={'/'} className="btn btn-sm btn-info mx-auto w-full mt-5">

@@ -4,7 +4,7 @@ const AdminSidebar = () => {
   return (
     <ul className="menu bg-base-200 w-56 h-full p-4 gap-2">
       <li>
-        <a>Dashboard</a>
+        <Link href={'/dashboard/admin'}>Dashboard</Link>
       </li>
       <li>
         <details>

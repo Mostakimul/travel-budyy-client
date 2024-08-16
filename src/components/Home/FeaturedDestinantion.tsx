@@ -2,18 +2,16 @@ import { TTrip } from '@/types';
 import Card from '../Card';
 
 const FeaturedDestinantion = async () => {
-  const result = await fetch(
-    `${process.env.NEXT_PUBLIC_APP_API_URL}/trip?limit=3`,
-  );
+  const result = await fetch(`${process.env.NEXT_PUBLIC_APP_API_URL}/trip`);
 
   const travelPosts = await result.json();
 
   let content = null;
 
   if (travelPosts.success === true) {
-    content = travelPosts?.data?.map((post: TTrip) => (
-      <Card key={post.id} post={post} />
-    ));
+    content = travelPosts?.data
+      ?.slice(1, 4)
+      .map((post: TTrip) => <Card key={post.id} post={post} />);
   } else {
     content = <p>No post found!</p>;
   }
