@@ -1,3 +1,4 @@
+'use client';
 import { logoutUser } from '@/services/actions/logoutUser';
 import { getUserInfo, isLoggedIn } from '@/services/auth.services';
 import Image from 'next/image';
